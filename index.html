@@ -11,6 +11,7 @@
 
 		<meta name="viewport" content="width=device-width">
 
+		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/style.css">
 
 	</head>
@@ -39,14 +40,14 @@
 				</select>
 			</div>
 			<div id="filtering" class="fl">
-				<label>Filter: <input type="text" name="filter" value="" placeholder="Student Name" class="filter-by"/></label>
-				<button type="submit">Show</button>
-				<button type="reset">x</button>
+				<label class="fl">Filter: </label><input type="text" name="filter" value="" placeholder="Student Name" class="filter-by fl" />
+				<button type="submit" class="btn fl submit">Show</button>
+				<button type="reset" class="hidden">x</button>
 			</div><!-- /filtering -->
 			<div id="pagination" class="fr">
-				<button type="button">&lt;&lt;</button>
-				<button type="button">&lt;</button>
-				<select name="num-of-pages">
+				<button type="button" class="btn fl">&lt;&lt;</button>
+				<button type="button" class="btn fl">&lt;</button>
+				<select name="num-of-pages" class="fl">
 					<option value="5">Show 5</option>
 					<option value="10">Show 10</option>
 					<option value="20">Show 20</option>
@@ -54,8 +55,8 @@
 					<option value="100">Show 100</option>
 					<option value="all">Show All</option>
 				</select>
-				<button type="button">&gt;</button>
-				<button type="button">&gt;&gt;</button>
+				<button type="button" class="btn fl">&gt;</button>
+				<button type="button" class="btn fl">&gt;&gt;</button>
 			</div><!-- /pagination -->
 			<div id="show-cols" class="clearfix">
 				<button type="button" class="faux-link">Hide/Show columns</button>
