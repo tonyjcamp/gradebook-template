@@ -94,4 +94,10 @@ $(function() {
 
     }
   });
+
+$('#gradebook-container').dataTable({
+    "sPaginationType": "full_numbers",
+    "sDom": '<"test"i>rt<"pagination"flp><"clear">'
+});
+
 });

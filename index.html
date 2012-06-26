@@ -96,7 +96,7 @@
 
   <!-- each grade row -->
   <script id="row-tmpl" type="text/x-dot-template">
-  	/*{{ console.log(it); }}*/
+  	{{ console.log(it); }}
   	{{ var students = Object.keys(it.users); }}
 
 	{{ for (var i = 0, l = students.length; i < l; i++) { }}
@@ -207,6 +207,8 @@
 
 	<!-- Our Templating Lib -->
 	<script src="js/libs/doT.js"></script>
+
+	<script src="js/libs/jquery.dataTables.js"></script>
 
 	<script src="js/script.js"></script>
 
