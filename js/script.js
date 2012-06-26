@@ -29,67 +29,69 @@ Object.keys = Object.keys || (function () {
     };
 })();
 
-// Populate the Categories Dropdown based on the Categories we have
-var getCategories = function() {
-	var categoryObjs = [];
-	for (var i = 0; i < gradebook.categories.length; i++) {
-		var category = Object.keys(gradebook.categories[i]);
-		categoryObjs.push(gradebook.categories[i][category]);
-	}
-	return categoryObjs;
-};
+$(function() {
+  $.ajax({
+     url: 'js/gradebook.json', 
+     async: false,
+     dataType: 'json',
+     success: function(gradebook, status) {
 
-var dynamicColumnTitles = ["Name", "ID", "Grade"];
-var gradesArray;
-var colTitles;
+        var dynamicColumnTitles = ["Name", "ID", "Grade"];
+        var gradesArray;
+        var colTitles;
 
-// Defines our partial templates
-var def = {
-	studentInfo: document.getElementById('students-tmpl').text,
-	assignments: document.getElementById('assignments-tmpl').text,
-	categories: document.getElementById('categories-tmpl').text
-};
-
-// renders our doT.js templates
-// var pagefn = doT.template(document.getElementById('row-tmpl').text, undefined, def);
-var headers = doT.template(document.getElementById('header-tmpl').text, undefined);
-var newStudents = doT.template(document.getElementById('row-tmpl').text, undefined, def);
-var categoryDropdown = doT.template(document.getElementById('category-dropdown-tmpl').text, undefined);
-
-// Start the logic to create the table header
-gradesArray = [];
-
-for (var i = 0; i < gradebook.categories.length; i++) {
-
-	// out categories
-	var categoryArray = Object.keys(gradebook.categories[i])[0];
-	// console.log(gradebook.categories[i][categoryArray].grades.length);
+        // Defines our partial templates
+        var def = {
+            studentInfo: document.getElementById('students-tmpl').text,
+            assignments: document.getElementById('assignments-tmpl').text,
+            categories: document.getElementById('categories-tmpl').text
+        };
 
 
-	for (var j = 0; j < gradebook.categories[i][categoryArray].grades.length; j++) {
-		
-		gradesArray.push(gradebook.categories[i][categoryArray].grades[j]);
+        // renders our doT.js templates
+        // var pagefn = doT.template(document.getElementById('row-tmpl').text, undefined, def);
+        var headers = doT.template(document.getElementById('header-tmpl').text, undefined);
+        var newStudents = doT.template(document.getElementById('row-tmpl').text, undefined, def);
+        var categoryDropdown = doT.template(document.getElementById('category-dropdown-tmpl').text, undefined);
 
-		if(j === gradebook.categories[i][categoryArray].grades.length - 1) {
-			gradesArray[gradesArray.length] = categoryArray;
-		}
+        // Start the logic to create the table header
+        gradesArray = [];
 
-	}
-}
+        var categoriesArray = Object.keys(gradebook.categories);
 
-colTitles = { "headers" : dynamicColumnTitles.concat(gradesArray) };
+        for (var i = 0; i < categoriesArray.length; i++) {
+            
+            var assignmentId = gradebook.categories[ categoriesArray[i] ].assignments;
+            for( var j = 0; j < assignmentId.length; j++) {
+                var assignmentName = gradebook.gradebookItems[assignmentId[j]].name;
 
-// add compiled markup to the dom
-// document.getElementById('gradebook-data').innerHTML = pagefn(students);
-document.getElementById('col-header').innerHTML = headers(colTitles);
-document.getElementById('gradebook-data').innerHTML = newStudents(gradebook);
-document.getElementById('category-dropdown').innerHTML = categoryDropdown(gradebook);
+                gradesArray.push(assignmentName);
 
-// Can also use jQuery to add to the DOM
-// $('#gradebook-data').html(pagefn(students));
+                if ((j+1) === assignmentId.length ) {
+                    var categoryName = gradebook.categories[categoriesArray[i]].name;
+                    gradesArray.push(categoryName);
+                    break;
+                };
+            }
 
-// basic toggling to show and hide the legend content
-$('#legend').on('click', '.faux-link', function() {
-	$('#legend-content').toggleClass('hidden');
+        }
+        
+        colTitles = { "headers" : dynamicColumnTitles.concat(gradesArray) };
+
+        // add compiled markup to the dom
+        // document.getElementById('gradebook-data').innerHTML = pagefn(students);
+        document.getElementById('col-header').innerHTML = headers(colTitles);
+        document.getElementById('gradebook-data').innerHTML = newStudents(gradebook);
+        document.getElementById('category-dropdown').innerHTML = categoryDropdown(gradebook);
+
+        // Can also use jQuery to add to the DOM
+        // $('#gradebook-data').html(pagefn(students));
+
+        // basic toggling to show and hide the legend content
+        $('#legend').on('click', '.faux-link', function() {
+            $('#legend-content').toggleClass('hidden');
+        });
+
+    }
+  });
 });
-

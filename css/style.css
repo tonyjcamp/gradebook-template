@@ -81,6 +81,7 @@ td { vertical-align: top; }
    ========================================================================== */
 
 body {
+  background-color: transparent;
   font-family: Arial, sans-serif;
   min-width: 1000px;
   overflow: scroll;
@@ -93,6 +94,9 @@ select {
 }
 
 .faux-link {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow:none;
   background: transparent;
   border: none;
   color: #618fb7;
@@ -257,7 +261,7 @@ select {
    ========================================================================== */
 
 @media only screen and (min-width: 35em) {
-	/* Style adjustments for viewports that meet the condition */
+  /* Style adjustments for viewports that meet the condition */
 }
 
 /* =============================================================================

@@ -85,118 +85,130 @@
 			
 		</div><!-- /legend -->
 
-		<!-- doT.js templating -->
+ <!-- doT.js templating -->
+  
+  <!-- Column Headers (th) -->
+  <script id="header-tmpl" type="text/x-dot-template">
+	{{~it.headers :value:index}}
+	<th>{{=value}}</th>
+	{{~}}			
+  </script>
 
-		<!-- Column Headers (th) -->
-		<script id="header-tmpl" type="text/x-dot-template">
-			{{~it.headers :value:index}}
-				<th>{{=value}}</th>
-			{{~}}			
-		</script>
+  <!-- each grade row -->
+  <script id="row-tmpl" type="text/x-dot-template">
+  	/*{{ console.log(it); }}*/
+  	{{ var students = Object.keys(it.users); }}
 
-		<!-- each grade row -->
-		<script id="row-tmpl" type="text/x-dot-template">
-			{{ for (var i = 0, l = it.students.length; i < l; i++) { }}
-				<tr>
+	{{ for (var i = 0, l = students.length; i < l; i++) { }}
+	<tr>
+	  /* Partial template 'student-info' */
+	  {{#def.studentInfo}}
 
-					/* Partial template 'student-info' */
-					{{#def.studentInfo}}
+	  /* Category Score */
+	  {{#def.categories}}
 
-					/* Category Score */
-					{{#def.categories}}
+	</tr>
+	{{ } }}
 
-				</tr>
-			{{ } }}
+  </script>
 
-		</script>
+  <script id="students-tmpl" type="text/x-dot-template">
+	<td class="name">{{=it.users[students[i]].sortName}}</td>
+	<td class="username">{{=it.users[students[i]].displayId}}</td>
+	<td class="class-grade">{{=students[i].classGrade}}</td>
+  </script>
 
-		<script id="students-tmpl" type="text/x-dot-template">
-			<td class="name">{{=it.students[i].lastName}}, {{=it.students[i].firstName}}</td>
-			<td class="username">{{=it.students[i].user}}</td>
-			<td class="class-grade">{{=it.students[i].classGrade}}</td>
-		</script>
+  <!-- include for row-tmpl -->
+  <script id="assignments-tmpl" type="text/x-dot-template">
 
-		<!-- include for row-tmpl -->
-		<script id="assignments-tmpl" type="text/x-dot-template">
-
-			/* loop through categories */
-			{{ for (var j = 0; j < it.categories[x][categoryName[0]].grades.length; j++) { }}
-				
-				/* Just making a nice refence to the current grade in the array */	
-				{{ var gradesArray = it.categories[x][categoryName[0]].grades[j]; }}
-
-				/* loop through the grades for each student */
-				{{ for (var k = 0; k < it.students[i].grades.length; k++) { }}
-					
-					/* 	If the current assignment (j) in the category grades array matches the current assignment
-						in the student loop, let's break out of this loop so we can output the Category grade located
-						in the categories-tmpl
-					*/
-					{{ if (gradesArray == Object.keys( it.students[i].grades[k] )[0] ) { }}
-
-						/* output the grade of the current assigment */
-						<td>{{=it.students[i].grades[k][ Object.keys( it.students[i].grades[k] )[0] ].grade}}</td>
-
-						{{ break; }}
+	/* loop through categories */
 	
-					{{ } }}
 
-				{{ } }}
+		/* Just making a nice refence to the current grade in the array */	
+		{{ var assignmentsObj = it.users[students[i]].grades; }}
+		{{ var assignmentsInCategory = it.categories[categoryId[x]].assignments; }}
 
-			{{ } }}
-		</script>
+		/* loop through the grades for each student */
+		{{ for (var k = 0; k < assignmentsInCategory.length; k++) { }}
 
-		<!-- Template for the category grade column -->
-		<script id="categories-tmpl" type="text/x-dot-template">
-
-			/*	This is only output when we have reached the last grade in the categories > key > grades array
-				The logic to break out of the assignment loop and output the grade is located in the
-				assignments-tmpl
+			/* 	If the current assignment (j) in the category grades array matches the current assignment
+			in the student loop, let's break out of this loop so we can output the Category grade located
+			in the categories-tmpl
 			*/
+				<td>{{=assignmentsObj[assignmentsInCategory[k]].points}}</td>
 
-			{{ for (var x = 0; x < it.categories.length; x++) { }}
+		{{ } }}
+	/*{{ } }}*/
+  </script>
 
-				/* This variable is referenced in the assignments-tmpl */
-				{{ var categoryName = Object.keys(it.categories[x]); }}
+  <!-- Template for the category grade column -->
+  <script id="categories-tmpl" type="text/x-dot-template">
 
-				/* bring in our assinments template*/
-				{{#def.assignments}}
+	/*	This is only output when we have reached the last grade in the categories > key > grades array
+	The logic to break out of the assignment loop and output the grade is located in the
+	assignments-tmpl
+	*/
+  	{{ var categoryId = Object.keys(it.categories); }}
 
-				/* output our category grade */	
-				<td class="category-grade">{{=it.students[i].categoryGrades[ Object.keys(it.students[i].categoryGrades)[x] ] }}</td>
+	{{ for (var x = 0; x < categoryId.length; x++) { }}
 
-			{{ } }}
+		/* This variable is referenced in the assignments-tmpl */
+		{{ var categoryName = categoryId[x]; }}
 
-		</script>
+		/* bring in our assinments template*/
+		{{#def.assignments}}
 
-		<!-- Template for the category dropdown filter -->
-		<script id="category-dropdown-tmpl" type="text/x-dot-template">
-			{{ 	var categories = getCategories();
-				var options = '<option value="all">All Sections/Groups</option>';
-			}}
+		/* output our category grade */	
+		/* need to know where this will be pulled from */
+		<td class="category-grade">{{=it.categories[categoryId[x]].name }}</td>
 
-			{{ for (var i = 0; i < categories.length; i++) { }}
-				
-				{{ options += '<option value="{{=categories[i].id}}"> {{=categories[i].name}} </option>' }}
+	{{ } }}
 
-			{{ } }}
+  </script>
 
-			{{=options }}
+  <!-- Template for the category dropdown filter -->
+  <script id="category-dropdown-tmpl" type="text/x-dot-template">
+	{{ var getCategories = function() { }}
+		{{ var categoryObjs = []; }}
+		{{ for (var cat = 0; cat < Object.keys(it.categories).length; cat++) { }}
+			{{ var category = Object.keys(it.categories)[cat]; }}
+			
+			{{ categoryObjs.push(it.categories[Object.keys(it.categories)[cat]].name); }}
 
-		</script>
+		{{ } }}
+		
+		{{ return categoryObjs; }}
+		
+		{{ }; }}
+	}}
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+	{{ 	
+		var categories = getCategories();
+		var options = '<option value="all">All Sections/Groups</option>';
+	}}
 
-		<script src="js/plugins.js"></script>
+	{{ for (var i = 0; i < categories.length; i++) { }}
+	
+		{{ options += '<option value="{{=categories[i].id}}"> {{=categories[i]}} </option>' }}
 
-		<!-- JSON Model Called Here -->
-		<script src="js/student.js"></script>
+	{{ } }}
 
-		<!-- Our Templating Lib -->
-		<script src="js/libs/doT.js"></script>
+	{{=options }}
 
-		<script src="js/script.js"></script>
+  </script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+
+	<script src="js/plugins.js"></script>
+
+	<!-- JSON Model Called Here -->
+	<script src="js/student.js"></script>
+
+	<!-- Our Templating Lib -->
+	<script src="js/libs/doT.js"></script>
+
+	<script src="js/script.js"></script>
 
 	</body>
 </html>
