@@ -95,9 +95,68 @@ $(function() {
     }
   });
 
-$('#gradebook-container').dataTable({
-    "sPaginationType": "full_numbers",
-    "sDom": '<"test"i>rt<"pagination"flp><"clear">'
-});
+
+    // Data Tables plugin initialization and customization
+        $.extend( $.fn.dataTableExt.oStdClasses, {
+
+        "sSortable": "header",
+        "sFilter": "filtering"
+    });
+
+    $('#gradebook-container').dataTable({
+        "sDom": '<"#sorting-options .clearfix" <".fl" f><"#pagination.clearfix fr" pl >><"clearfix" C><".clearfix" t>',
+        "sPaginationType": "four_button",
+        "oLanguage": {
+             "oPaginate": {
+                "sFirst": "<<",
+                "sLast": ">>",
+                "sNext": ">",
+                "sPrevious": "<"
+                },
+            "sFilter": "Filter:_INPUT_",
+            "sLengthMenu": '<select>'+
+                '<option value="5">5</option>'+
+                '<option value="10">10</option>'+
+                '<option value="20">20</option>'+
+                '<option value="30">30</option>'+
+                '<option value="40">40</option>'+
+                '<option value="50">50</option>'+
+                '<option value="-1">All</option>'+
+                '</select>'
+            },
+            "iDisplayLength": 5
+    });
+
+    // reordering the DOM a bit to make the items per page dropdown
+    // appear where we want it. Couldn't find a way to do this using 
+    // the library that matched our layout.
+    var rowsPerPage = $('#gradebook-container_length');
+    $('.paginate_disabled_previous').eq(1).after(rowsPerPage);
+    $('.dataTables_length').addClass('fl clearfix')
+    $('.ColVis_Button').addClass('faux-link');
+    $('#view').prependTo('#sorting-options').end().removeClass('hidden');
+
+    $('#gradebook-data tr:first td').each(function(k,v) {
+        var self = $(this);
+        var className = self.attr('class');
+        $('th').eq(k).addClass(className);
+    });
+
+
+    // fiter the data, showing only the selected category
+    $('#category-dropdown').on('change', function() {
+        var val = $(this).val();
+
+        $('td, th').show();
+
+        if(val === 'all') {
+            return;
+        }
+
+        $('td, th').not('.' + val + ', .name, .username, .class-grade').hide();
+    
+    });
+
+
 
 });

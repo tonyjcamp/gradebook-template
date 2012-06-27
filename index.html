@@ -12,6 +12,7 @@
 		<meta name="viewport" content="width=device-width">
 
 		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/ColVis.css">
 		<link rel="stylesheet" href="css/style.css">
 
 	</head>
@@ -29,39 +30,12 @@
 			</dl>
 		</header><!-- /header -->
 
-		<div id="sorting-options" class="clearfix">
-			<div id="view" class="fl">
-				View:
-				<select name="sections">
-					<option value="all">All Sections/Groups</option>
-				</select>
-				<select id="category-dropdown" name="categories">
-					<!-- populated based on JSON data -->
-				</select>
-			</div>
-			<div id="filtering" class="fl">
-				<label class="fl">Filter: </label><input type="text" name="filter" value="" placeholder="Student Name" class="filter-by fl" />
-				<button type="submit" class="btn fl submit">Show</button>
-				<button type="reset" class="hidden">x</button>
-			</div><!-- /filtering -->
-			<div id="pagination" class="fr">
-				<button type="button" class="btn fl">&lt;&lt;</button>
-				<button type="button" class="btn fl">&lt;</button>
-				<select name="num-of-pages" class="fl">
-					<option value="5">Show 5</option>
-					<option value="10">Show 10</option>
-					<option value="20">Show 20</option>
-					<option value="50">Show 50</option>
-					<option value="100">Show 100</option>
-					<option value="all">Show All</option>
-				</select>
-				<button type="button" class="btn fl">&gt;</button>
-				<button type="button" class="btn fl">&gt;&gt;</button>
-			</div><!-- /pagination -->
-			<div id="show-cols" class="clearfix">
-				<button type="button" class="faux-link">Hide/Show columns</button>
-			</div><!-- /show-cols -->
-		</div><!-- /sorting-options -->
+		<div id="view" class="fl hidden">
+			View:
+			<select id="category-dropdown" name="categories">
+				<!-- populated based on JSON data -->
+			</select>
+		</div>
 
 		<!-- data table -->
 		<table id="gradebook-container">
@@ -91,7 +65,7 @@
   <script id="header-tmpl" type="text/x-dot-template">
 	{{~it.headers :value:index}}
 	<th>{{=value}}</th>
-	{{~}}			
+	{{~}}		
   </script>
 
   <!-- each grade row -->
@@ -135,7 +109,7 @@
 			in the student loop, let's break out of this loop so we can output the Category grade located
 			in the categories-tmpl
 			*/
-				<td>{{=assignmentsObj[assignmentsInCategory[k]].points}}</td>
+				<td class="{{=categoryClass}}">{{=assignmentsObj[assignmentsInCategory[k]].points}}</td>
 
 		{{ } }}
 	/*{{ } }}*/
@@ -154,13 +128,15 @@
 
 		/* This variable is referenced in the assignments-tmpl */
 		{{ var categoryName = categoryId[x]; }}
+		{{ var categoryClass = (it.categories[categoryId[x]].name).split(' ').join('-'); }}
 
 		/* bring in our assinments template*/
 		{{#def.assignments}}
 
 		/* output our category grade */	
 		/* need to know where this will be pulled from */
-		<td class="category-grade">{{=it.categories[categoryId[x]].name }}</td>
+		{{ console.log(  ); }}
+		<td class="category-grade {{=categoryClass}}">{{=it.categories[categoryId[x]].name }}</td>
 
 	{{ } }}
 
@@ -188,12 +164,12 @@
 	}}
 
 	{{ for (var i = 0; i < categories.length; i++) { }}
-	
-		{{ options += '<option value="{{=categories[i].id}}"> {{=categories[i]}} </option>' }}
+		{{ var className = categories[i].split(' ').join('-'); }}
+		{{ options += '<option value="{{=className}}" class="{{=className}}"> {{=categories[i]}} </option>'; }}
 
 	{{ } }}
 
-	{{=options }}
+	{{=options}}
 
   </script>
 
@@ -209,6 +185,10 @@
 	<script src="js/libs/doT.js"></script>
 
 	<script src="js/libs/jquery.dataTables.js"></script>
+	<script src="js/libs/ColVis.js"></script>
+
+	<script src="js/libs/bootrap-dataTable.js"></script>
+
 
 	<script src="js/script.js"></script>
 

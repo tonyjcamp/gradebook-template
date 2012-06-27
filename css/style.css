@@ -101,6 +101,7 @@ select {
   border: none;
   color: #618fb7;
   font-weight: bold;
+  font-size: 12px;
   padding: 0;
 }
 
@@ -156,18 +157,20 @@ select {
   margin-bottom: 10px;
 }
 
-#filtering {
+#filtering, #gradebook-container_filter {
   margin: 0 0 0 70px;
 }
 
 #filtering label {
+  display: inline-block;
   font-size: 13px;
   line-height: 27px;
   margin-right: 3px;
 }
 
-#filtering .filter-by {
+#filtering .filter-by, .filtering input[type="text"] {
   border: 1px solid #e4e4e4;
+  display: inline-block;
   width: 120px;
 }
 
@@ -183,7 +186,12 @@ select {
   margin: 0 0 0 3px;
 }
 
-#pagination select {
+.dataTables_paginate.paging_four_button {
+  clear: both;
+}
+
+#pagination select, .dataTables_paginate.paging_four_button select {
+  float: left;
   margin-left: 3px;
 }
 
@@ -210,7 +218,7 @@ select {
 
 #gradebook-container th {
     border: 1px solid #5286b1;
-    padding: 5px 15px;
+    padding: 5px 22px;
 }
 
 #gradebook-container .sorted-by {
@@ -235,12 +243,12 @@ select {
   font-weight: bold;
 }
 
-#gradebook-container .class-grade {
+#gradebook-container td.class-grade {
   background: #d6e1f8;
   font-weight: bold;
 }
 
-#gradebook-container .category-grade {
+#gradebook-container td.category-grade {
   background: #f1f1f1;
 }
 
@@ -255,6 +263,61 @@ select {
   list-style-type: none;
 }
 
+thead th.sorting_asc {
+    background: url('../images/sort_asc.png') no-repeat right center;
+}
+ 
+thead th.sorting_desc {
+    background: url('../images/sort_desc.png') no-repeat right center;
+}
+ 
+thead th.sorting {
+    background: url('../images/sort_both.png') no-repeat right center;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables row classes
+ */
+table.display tr.odd.gradeA {
+  background-color: #ddffdd;
+}
+
+table.display tr.even.gradeA {
+  background-color: #eeffee;
+}
+
+table.display tr.odd.gradeC {
+  background-color: #ddddff;
+}
+
+table.display tr.even.gradeC {
+  background-color: #eeeeff;
+}
+
+table.display tr.odd.gradeX {
+  background-color: #ffdddd;
+}
+
+table.display tr.even.gradeX {
+  background-color: #ffeeee;
+}
+
+table.display tr.odd.gradeU {
+  background-color: #ddd;
+}
+
+table.display tr.even.gradeU {
+  background-color: #eee;
+}
+
+
+tr.odd {
+  background-color: #F7FBFF;
+}
+
+tr.even {
+  background-color: white;
+}
 
 /* =============================================================================
    Media Queries
