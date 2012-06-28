@@ -30,77 +30,82 @@ Object.keys = Object.keys || (function () {
 })();
 
 $(function() {
-  $.ajax({
-     url: 'js/gradebook.json', 
-     async: false,
-     dataType: 'json',
-     success: function(gradebook, status) {
-
-        var dynamicColumnTitles = ["Name", "ID", "Grade"];
-        var gradesArray;
-        var colTitles;
-
-        // Defines our partial templates
-        var def = {
-            studentInfo: document.getElementById('students-tmpl').text,
-            assignments: document.getElementById('assignments-tmpl').text,
-            categories: document.getElementById('categories-tmpl').text
-        };
-
-
-        // renders our doT.js templates
-        // var pagefn = doT.template(document.getElementById('row-tmpl').text, undefined, def);
-        var headers = doT.template(document.getElementById('header-tmpl').text, undefined);
-        var newStudents = doT.template(document.getElementById('row-tmpl').text, undefined, def);
-        var categoryDropdown = doT.template(document.getElementById('category-dropdown-tmpl').text, undefined);
-
-        // Start the logic to create the table header
-        gradesArray = [];
-
-        var categoriesArray = Object.keys(gradebook.categories);
-
-        for (var i = 0; i < categoriesArray.length; i++) {
+      $.ajax({
+         url: 'js/gradebook.json', 
+         async: false,
+         dataType: 'json',
+         success: function(gradebook, status) {
             
-            var assignmentId = gradebook.categories[ categoriesArray[i] ].assignments;
-            for( var j = 0; j < assignmentId.length; j++) {
-                var assignmentName = gradebook.gradebookItems[assignmentId[j]].name;
-
-                gradesArray.push(assignmentName);
-
-                if ((j+1) === assignmentId.length ) {
-                    var categoryName = gradebook.categories[categoriesArray[i]].name;
-                    gradesArray.push(categoryName);
-                    break;
-                };
+            if ( gradebook.averageGrade && gradebook.averageGradePercent ) {
+                $('#grade-value').html('' + gradebook.averageGrade + '('
+                    + gradebook.averageGradePercent + '%)');
             }
 
-        }
-        
-        colTitles = { "headers" : dynamicColumnTitles.concat(gradesArray) };
+            //refereces to internationalized text squirreled away in the jsf
+            gradebook.all_sections_text = $('#all_sections_groups').html();
+            gradebook.unassigned_text = $('#unassigned_groups').html();
+            
+            // Defines our partial templates
+            var def = {
+                studentInfo: document.getElementById('students-tmpl').text,
+                categories: document.getElementById('categories-tmpl').text
+            };
 
-        // add compiled markup to the dom
-        // document.getElementById('gradebook-data').innerHTML = pagefn(students);
-        document.getElementById('col-header').innerHTML = headers(colTitles);
-        document.getElementById('gradebook-data').innerHTML = newStudents(gradebook);
-        document.getElementById('category-dropdown').innerHTML = categoryDropdown(gradebook);
+            // renders our doT.js templates
+            // var pagefn = doT.template(document.getElementById('row-tmpl').text, undefined, def);
+            var headers = doT.template(document.getElementById('header-tmpl').text, undefined);
+            var newStudents = doT.template(document.getElementById('row-tmpl').text, undefined, def);
+            var categoryDropdown = doT.template(document.getElementById('category-dropdown-tmpl').text, undefined);
 
-        // Can also use jQuery to add to the DOM
-        // $('#gradebook-data').html(pagefn(students));
+            var nameColumn = $('#column_title_name').html();
+            var idColumn = $('#column_title_ID').html();
+            var gradeColumn = $('#column_title_grade').html();
 
-        // basic toggling to show and hide the legend content
-        $('#legend').on('click', '.faux-link', function() {
-            $('#legend-content').toggleClass('hidden');
-        });
+            var colTitles = [nameColumn, idColumn, gradeColumn];
+            var items = gradebook.gradebookItems;
+            for (var i=0; i<items.length; ++i){
+                var item = items[i];
+                var title = item.name;
+                if (item.isCategory && item.weight) {
+                    title += ' (' + item.weight + '%)';
+                }
+                colTitles.push(title);
+            }
+            
+            // add compiled markup to the dom
+            // document.getElementById('gradebook-data').innerHTML = pagefn(students);
+            document.getElementById('col-header').innerHTML = headers(colTitles);
+            document.getElementById('gradebook-data').innerHTML = newStudents(gradebook);
+            document.getElementById('category-dropdown').innerHTML = categoryDropdown(gradebook);
 
-    }
-  });
+            // Can also use jQuery to add to the DOM
+            // $('#gradebook-data').html(pagefn(students));
 
+            // basic toggling to show and hide the legend content
+            $('#legend').on('click', '.faux-link', function() {
+                $('#legend-content').toggleClass('hidden');
+            });
 
+          }
+      });
     // Data Tables plugin initialization and customization
-        $.extend( $.fn.dataTableExt.oStdClasses, {
-
+    $.extend( $.fn.dataTableExt.oStdClasses, {
         "sSortable": "header",
         "sFilter": "filtering"
+    });
+
+    $.extend( $.fn.dataTableExt.oSort, {
+        "title-string-pre": function ( a ) {
+            return a.match(/title="(.*?)"/)[1].toLowerCase();
+        },
+     
+        "title-string-asc": function ( a, b ) {
+            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+        },
+     
+        "title-string-desc": function ( a, b ) {
+            return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+        }
     });
 
     $('#gradebook-container').dataTable({
@@ -143,7 +148,7 @@ $(function() {
     });
 
 
-    // fiter the data, showing only the selected category
+    // fiter the data, showing only the selected category items
     $('#category-dropdown').on('change', function() {
         var val = $(this).val();
 
@@ -154,9 +159,23 @@ $(function() {
         }
 
         $('td, th').not('.' + val + ', .name, .username, .class-grade').hide();
-    
+
     });
 
+    (function() {
+        var sortingHeight;
+        var frame = $('iframe', window.parent.document);
+        var clicked = false;
 
+        $('.TableTools').on('click', 'button', function() {
+            sortingHeight = $('.ColVis_collection').height();
 
+            if( sortingHeight - frame.height() < 1 && clicked === false ) {
+                var newHeight = sortingHeight + frame.height();
+
+                frame.height(newHeight).css('height', newHeight + 'px');
+                clicked = true;
+            }
+        });
+    }());
 });

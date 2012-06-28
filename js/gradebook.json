@@ -6,426 +6,376 @@
             "sortName": "Camp, Tony",
             "displayId": "tony_student3",
             "displayName": "Tony Camp",
+            "classGrade": "B",
+            "classGradePercent": 80,
             "grades": {
-                "20": {
+                "0": {
                     "recorded": "Jun 18, 2012 10:19:03 AM",
-                    "points": 90
+                    "percent": 100
                 },
-                "21": {
+                "1": {
                     "recorded": "Jun 18, 2012 10:19:03 AM",
-                    "points": 100
+                    "percent": 80
                 },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:19:03 AM",
-                    "points": 90
+                "2": {
+                    "percent": 80
                 },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:19:03 AM",
-                    "points": 80
-                },
-                "24": {
+                "3": {
                     "recorded": "Jun 25, 2012 10:28:25 PM",
-                    "points": 8
+                    "percent": 80
                 },
-                "25": {
+                "4": {
                     "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 20
-                }
-            }
-        },
-        "68f24e14-cd24-4c61-a878-b0dfbf6e75f2": {
-            "uid": "68f24e14-cd24-4c61-a878-b0dfbf6e75f5",
-            "sortName": "camp, tony",
-            "displayId": "tony_student2",
-            "displayName": "tony camp",
-            "grades": {
-                "20": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 50
+                    "percent": 100
                 },
-                "21": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 60
+                "5": {
+                    "recorded": "Jun 18, 2012 10:19:03 AM",
+                    "percent": 90
                 },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 10
+                "6": {
+                    "recorded": "Jun 18, 2012 10:19:03 AM",
+                    "percent": 90
                 },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 90
-                },
-                "24": {
-                    "recorded": "Jun 25, 2012 10:24:46 PM",
-                    "points": 6
-                },
-                "25": {
-                    "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 19.8
-                }
+                "7": {}
             }
         },
         "68f24e14-cd24-4c61-a878-b0dfbf6e75f5": {
-            "uid": "68f24e14-cd24-4c61-a878-b0dfbf6e75f5",
-            "sortName": "camp, tony",
-            "displayId": "tony_student2",
-            "displayName": "tony camp",
+            "uid": "68f24e14-cd23-4c61-a878-b0dfbf6e75f5",
+            "sortName": "Thedog, Jake",
+            "displayId": "Jake",
+            "displayName": "Jake Thedog",
+            "classGrade": "D",
+            "classGradePercent": 65,
             "grades": {
-                "20": {
+                "0": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 20
+                    "percent": 60
                 },
-                "21": {
+                "1": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 30
+                    "percent": 66
                 },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 50
+                "2": {
+                    "percent": 68
                 },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 70
-                },
-                "24": {
+                "3": {
                     "recorded": "Jun 25, 2012 10:24:46 PM",
-                    "points": 66
+                    "percent": 69
                 },
-                "25": {
+                "4": {
                     "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 20
-                }
+                    "percent": 62
+                },
+                "5": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 60
+                },
+                "6": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 63
+                },
+                "7": {}
             }
         },
-        "68f24e14-cd24-4c61-a878-b0dfbf6e75fX": {
+        "68f24e14-cd24-4c61-a878-b0dfbf6e75s5": {
             "uid": "68f24e14-cd24-4c61-a878-b0dfbf6e75f5",
-            "sortName": "camp, tony",
-            "displayId": "tony_student2",
-            "displayName": "tony camp",
+            "sortName": "Doe, John",
+            "displayId": "jo-jo",
+            "displayName": "John Joe",
+            "classGrade": "C",
+            "classGradePercent": 80,
             "grades": {
-                "20": {
+                "0": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 20
+                    "percent": 75
                 },
-                "21": {
+                "1": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 10
+                    "percent": 80
                 },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 5
+                "2": {
+                    "percent": 70
                 },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 0
-                },
-                "24": {
+                "3": {
                     "recorded": "Jun 25, 2012 10:24:46 PM",
-                    "points": 26
+                    "percent": 71
                 },
-                "25": {
+                "4": {
                     "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 97
-                }
+                    "percent": 77
+                },
+                "5": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 79
+                },
+                "6": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 82
+                },
+                "7": {}
             }
         },
-        "68f24e14-cd24-4c61-a878-b0dfbf6e35f5": {
+        "68f24e14-cd24-4c61-a348-b0dfbf6e75f5": {
             "uid": "68f24e14-cd24-4c61-a878-b0dfbf6e75f5",
-            "sortName": "camp, tony",
-            "displayId": "tony_student2",
-            "displayName": "tony camp",
+            "sortName": "Bubblegum, Princess",
+            "displayId": "princess",
+            "displayName": "Princess Bubblegum",
+            "classGrade": "A",
+            "classGradePercent": 100,
             "grades": {
-                "20": {
+                "0": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 96
+                    "percent": 101
                 },
-                "21": {
+                "1": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 96
+                    "percent": 102
                 },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 96
+                "2": {
+                    "percent": 97
                 },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 96
-                },
-                "24": {
+                "3": {
                     "recorded": "Jun 25, 2012 10:24:46 PM",
-                    "points": 96
+                    "percent": 101
                 },
-                "25": {
+                "4": {
                     "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 96.8
-                }
+                    "percent": 103
+                },
+                "5": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 99
+                },
+                "6": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 95
+                },
+                "7": {}
             }
         },
-        "68f24e14-cd24-4c61-a828-b0dfbf6e75f5": {
+        "68f24e14-cd2a-4c61-a348-b0dfbf6e75f5": {
             "uid": "68f24e14-cd24-4c61-a878-b0dfbf6e75f5",
-            "sortName": "camp, tony",
-            "displayId": "tony_student2",
-            "displayName": "tony camp",
+            "sortName": "Spaceprincess, Lumpy",
+            "displayId": "lsp",
+            "displayName": "Lumpy Spaceprincess",
+            "classGrade": "B",
+            "classGradePercent": 85,
             "grades": {
-                "20": {
+                "0": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 85
+                    "percent": 80
                 },
-                "21": {
+                "1": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 76
+                    "percent": 82
                 },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 81
+                "2": {
+                    "percent": 85
                 },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 24
-                },
-                "24": {
+                "3": {
                     "recorded": "Jun 25, 2012 10:24:46 PM",
-                    "points": 64
+                    "percent": 87
                 },
-                "25": {
+                "4": {
                     "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 22
-                }
+                    "percent": 86
+                },
+                "5": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 82
+                },
+                "6": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 81
+                },
+                "7": {}
             }
         },
-        "68f24e14-cd24-4c61-a838-b0dfbf6e75f5": {
-            "uid": "68f24e14-cd24-4c61-a878-b0dfbf6e75f5",
-            "sortName": "camp, tony",
-            "displayId": "tony_student2",
-            "displayName": "tony camp",
+        "68f24e14-cd2a-4c61-a348-234": {
+            "uid": "68f24e14-cd24-4c61-asdf-234",
+            "sortName": "Butler, Peppermint",
+            "displayId": "butler",
+            "displayName": "Peppermint Butler",
+            "classGrade": "B",
+            "classGradePercent": 82,
             "grades": {
-                "20": {
+                "0": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 23
+                    "percent": 81
                 },
-                "21": {
+                "1": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 88
+                    "percent": 81
                 },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 57
+                "2": {
+                    "percent": 86
                 },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 5
-                },
-                "24": {
+                "3": {
                     "recorded": "Jun 25, 2012 10:24:46 PM",
-                    "points": 25
+                    "percent": 86
                 },
-                "25": {
+                "4": {
                     "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 46.8
-                }
+                    "percent": 88
+                },
+                "5": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 88
+                },
+                "6": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 88
+                },
+                "7": {}
             }
         },
-        "68f24e14-cd24-4c61-a871-b0dfbf6e75f5": {
+        "68f24e14-cd2a-234-a348-b0dfbf6e75f5": {
             "uid": "68f24e14-cd24-4c61-a878-b0dfbf6e75f5",
-            "sortName": "camp, tony",
-            "displayId": "tony_student2",
-            "displayName": "tony camp",
+            "sortName": "Rainacorn, Lady",
+            "displayId": "Lady",
+            "displayName": "Lady Rainacorn",
+            "classGrade": "F",
+            "classGradePercent": 8,
             "grades": {
-                "20": {
+                "0": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 50
+                    "percent": 3
                 },
-                "21": {
+                "1": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 60
+                    "percent": 4
                 },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 10
+                "2": {
+                    "percent": 5
                 },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 90
-                },
-                "24": {
+                "3": {
                     "recorded": "Jun 25, 2012 10:24:46 PM",
-                    "points": 6
+                    "percent": 7
                 },
-                "25": {
+                "4": {
                     "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 19.8
-                }
+                    "percent": 6
+                },
+                "5": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 2
+                },
+                "6": {
+                    "recorded": "Jun 18, 2012 10:18:42 AM",
+                    "percent": 1
+                },
+                "7": {}
             }
         },
-        "68f24e14-cd24-4c61-a876-b0dfbf6e75f5": {
+        "68f24e14-cd2a-4c61-a348-23": {
             "uid": "68f24e14-cd24-4c61-a878-b0dfbf6e75f5",
-            "sortName": "camp, tony",
-            "displayId": "tony_student2",
-            "displayName": "tony camp",
+            "sortName": "Thehuman, Fionna",
+            "displayId": "fionna123",
+            "displayName": "Fionna Thehuman",
+            "classGrade": "D",
+            "classGradePercent": 60,
             "grades": {
-                "20": {
+                "0": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 50
+                    "percent": 60
                 },
-                "21": {
+                "1": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 60
+                    "percent": 62
                 },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 10
+                "2": {
+                    "percent": 65
                 },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 90
-                },
-                "24": {
+                "3": {
                     "recorded": "Jun 25, 2012 10:24:46 PM",
-                    "points": 6
+                    "percent": 67
                 },
-                "25": {
+                "4": {
                     "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 39
-                }
-            }
-        },
-        "68f24e14-cd24-4c61-a873-b0dfbf6e75f5": {
-            "uid": "68f24e14-cd24-4c61-a878-b0dfbf6e75f5",
-            "sortName": "camp, tony",
-            "displayId": "tony_student2",
-            "displayName": "tony camp",
-            "grades": {
-                "20": {
+                    "percent": 66
+                },
+                "5": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 50
+                    "percent": 62
                 },
-                "21": {
+                "6": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 60
+                    "percent": 61
                 },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 10
-                },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 90
-                },
-                "24": {
-                    "recorded": "Jun 25, 2012 10:24:46 PM",
-                    "points": 6
-                },
-                "25": {
-                    "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 38
-                }
-            }
-        },
-        "68f24e24-cd24-4c61-a873-b0dfbf6e75f5": {
-            "uid": "68f24e14-cd24-4c61-a878-b0dfbf6e75f5",
-            "sortName": "camp, tony",
-            "displayId": "tony_student2",
-            "displayName": "tony camp",
-            "grades": {
-                "20": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 50
-                },
-                "21": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 60
-                },
-                "22": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 10
-                },
-                "23": {
-                    "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "points": 90
-                },
-                "24": {
-                    "recorded": "Jun 25, 2012 10:24:46 PM",
-                    "points": 6
-                },
-                "25": {
-                    "recorded": "Jun 25, 2012 10:29:50 PM",
-                    "points": 53
-                }
+                "7": {}
             }
         }
     },
-    "gradebookItems": {
-        "20": {
-            "id": 20,
-            "name": "Test2",
-            "sortOrder": 0,
-            "itemType": "Percentage",
-            "categoryId": 11,
-            "hideInAllGrades": true,
-            "dueDate": "Jun 8, 2012"
-        },
-        "21": {
-            "id": 21,
+    "gradebookItems": [
+        {
+            "id": 0,
             "name": "Test Older Date",
-            "sortOrder": 1,
             "itemType": "Percentage",
-            "categoryId": 10,
-            "hideInAllGrades": true,
+            "categoryId": 2,
+            "hideInAllGrades": false,
+            "isCategory": false,
             "dueDate": "Jun 13, 2012"
         },
-        "22": {
-            "id": 22,
-            "name": "Third Assignment",
-            "sortOrder": 3,
-            "itemType": "Percentage",
-            "categoryId": 11,
-            "hideInAllGrades": false,
-            "dueDate": "Jun 22, 2012"
-        },
-        "23": {
-            "id": 23,
+        {
+            "id": 1,
             "name": "Ordering Test",
-            "sortOrder": 2,
             "itemType": "Percentage",
-            "categoryId": 10,
-            "hideInAllGrades": true,
+            "categoryId": 2,
+            "hideInAllGrades": false,
+            "isCategory": false,
             "dueDate": "Jun 18, 2012"
         },
-        "24": {
-            "id": 24,
+        {
+            "id": 2,
+            "name": "Category 2",
+            "categoryId": 2,
+            "hideInAllGrades": false,
+            "isCategory": true
+        },
+        {
+            "id": 3,
             "name": "Test 3",
             "itemType": "Percentage",
-            "categoryId": 11,
+            "categoryId": 7,
             "hideInAllGrades": false,
+            "isCategory": false,
             "dueDate": "Feb 3, 2012"
         },
-        "25": {
-            "id": 25,
+        {
+            "id": 4,
             "name": "Test 4",
             "itemType": "Percentage",
-            "categoryId": 11,
+            "categoryId": 7,
             "hideInAllGrades": false,
+            "isCategory": false,
             "dueDate": "Mar 4, 2012"
-        }
-    },
-    "categories": {
-        "10": {
-            "id": 10,
-            "name": "Category 2",
-            "assignments": [
-                21,
-                23
-            ]
         },
-        "11": {
-            "id": 11,
+        {
+            "id": 5,
+            "name": "Test2",
+            "itemType": "Percentage",
+            "categoryId": 7,
+            "hideInAllGrades": false,
+            "isCategory": false,
+            "dueDate": "Jun 8, 2012"
+        },
+        {
+            "id": 6,
+            "name": "Third Assignment",
+            "itemType": "Percentage",
+            "categoryId": 7,
+            "hideInAllGrades": false,
+            "isCategory": false,
+            "dueDate": "Jun 22, 2012"
+        },
+        {
+            "id": 7,
             "name": "Category 1 Test",
-            "assignments": [
-                25,
-                24,
-                20,
-                22
-            ]
+            "categoryId": 7,
+            "hideInAllGrades": false,
+            "isCategory": true
         }
-    }
+    ],
+    "averageGrade": "B",
+    "averageGradePercent": 85
 }
