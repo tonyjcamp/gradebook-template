@@ -44,7 +44,7 @@ $(function() {
             //refereces to internationalized text squirreled away in the jsf
             gradebook.all_sections_text = $('#all_sections_groups').html();
             gradebook.unassigned_text = $('#unassigned_groups').html();
-            
+
             // Defines our partial templates
             var def = {
                 studentInfo: document.getElementById('students-tmpl').text,
@@ -88,48 +88,61 @@ $(function() {
 
           }
       });
+
+
+    $('#gradebook-data tr:first td').each(function(k,v) {
+        var self = $(this);
+        var className = self.attr('class');
+        $('th').eq(k).addClass(className);
+    });
+
+
     // Data Tables plugin initialization and customization
-    $.extend( $.fn.dataTableExt.oStdClasses, {
+    jQuery.extend( jQuery.fn.dataTableExt.oStdClasses, {
         "sSortable": "header",
         "sFilter": "filtering"
     });
 
-    $.extend( $.fn.dataTableExt.oSort, {
-        "title-string-pre": function ( a ) {
-            return a.match(/title="(.*?)"/)[1].toLowerCase();
+    jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+        "title-numeric-pre": function ( a ) {
+            var x = a.match(/title="*(-?[0-9\.]+)/)[1];
+            return parseFloat( x );
         },
      
-        "title-string-asc": function ( a, b ) {
+        "title-numeric-asc": function ( a, b ) {
             return ((a < b) ? -1 : ((a > b) ? 1 : 0));
         },
      
-        "title-string-desc": function ( a, b ) {
+        "title-numeric-desc": function ( a, b ) {
             return ((a < b) ? 1 : ((a > b) ? -1 : 0));
         }
-    });
+    } );
 
     $('#gradebook-container').dataTable({
         "sDom": '<"#sorting-options .clearfix" <".fl" f><"#pagination.clearfix fr" pl >><"clearfix" C><".clearfix" t>',
         "sPaginationType": "four_button",
         "oLanguage": {
-             "oPaginate": {
+            "oPaginate": {
                 "sFirst": "<<",
                 "sLast": ">>",
                 "sNext": ">",
                 "sPrevious": "<"
-                },
+            },
             "sFilter": "Filter:_INPUT_",
             "sLengthMenu": '<select>'+
-                '<option value="5">5</option>'+
-                '<option value="10">10</option>'+
-                '<option value="20">20</option>'+
-                '<option value="30">30</option>'+
-                '<option value="40">40</option>'+
-                '<option value="50">50</option>'+
-                '<option value="-1">All</option>'+
-                '</select>'
-            },
-            "iDisplayLength": 5
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="20">20</option>'+
+            '<option value="30">30</option>'+
+            '<option value="40">40</option>'+
+            '<option value="50">50</option>'+
+            '<option value="-1">All</option>'+
+            '</select>'
+        },
+        "iDisplayLength": 5,
+        "aoColumnDefs": [ 
+              { "sType": "title-numeric", "aTargets": ["class-grade", "grade"] }            ]
+
     });
 
     // reordering the DOM a bit to make the items per page dropdown
@@ -140,12 +153,6 @@ $(function() {
     $('.dataTables_length').addClass('fl clearfix')
     $('.ColVis_Button').addClass('faux-link');
     $('#view').prependTo('#sorting-options').end().removeClass('hidden');
-
-    $('#gradebook-data tr:first td').each(function(k,v) {
-        var self = $(this);
-        var className = self.attr('class');
-        $('th').eq(k).addClass(className);
-    });
 
 
     // fiter the data, showing only the selected category items
@@ -160,6 +167,10 @@ $(function() {
 
         $('td, th').not('.' + val + ', .name, .username, .class-grade').hide();
 
+    });
+
+    $('#gradebook-container_length').on('change', 'select', function() {
+        $('#category-dropdown').trigger('change');
     });
 
     (function() {

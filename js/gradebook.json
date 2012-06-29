@@ -83,7 +83,7 @@
             "displayId": "jo-jo",
             "displayName": "John Joe",
             "classGrade": "C",
-            "classGradePercent": 80,
+            "classGradePercent": 101,
             "grades": {
                 "0": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
@@ -262,7 +262,7 @@
                 },
                 "6": {
                     "recorded": "Jun 18, 2012 10:18:42 AM",
-                    "percent": 1
+                    "percent": 5
                 },
                 "7": {}
             }
@@ -330,7 +330,8 @@
             "name": "Category 2",
             "categoryId": 2,
             "hideInAllGrades": false,
-            "isCategory": true
+            "isCategory": true,
+            "itemType": "category"
         },
         {
             "id": 3,
@@ -373,7 +374,8 @@
             "name": "Category 1 Test",
             "categoryId": 7,
             "hideInAllGrades": false,
-            "isCategory": true
+            "isCategory": true,
+            "itemType": "category"
         }
     ],
     "averageGrade": "B",

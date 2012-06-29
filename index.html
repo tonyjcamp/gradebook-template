@@ -70,7 +70,12 @@
 		<!-- Column Headers (th) -->
 		<script id="header-tmpl" type="text/x-dot-template">
 			{{~it :value:index}}
-				<th>{{=value}}</th>
+				{{? value !== "Name" && value !== "ID" }}
+					<th class="grade">
+				{{??}}
+					<th>
+				{{?}}
+					{{=value}}</th>
 			{{~}}			
 		</script>
 
@@ -97,9 +102,9 @@
 			<td class="username">{{=student.displayId}}</td>
 
 			{{? student.isClassGradeUserEntered }}
-				<td class="class-grade">{{=student.classGrade}}*({{=student.classGradePercent}}%)</td>
+				<td class="class-grade"><span title="{{=student.classGradePercent}}"><{{=student.classGrade}} *({{=student.classGradePercent}}%)</span></td>
 			{{??}}
-				<td class="class-grade">{{=student.classGrade}}({{=student.classGradePercent}}%)</td>
+				<td class="class-grade">{{=student.classGrade}} (<span title="{{=student.classGradePercent}}">{{=student.classGradePercent}}</span>%)</td>
 			{{?}}
 
 		</script>
@@ -108,24 +113,24 @@
 		<script id="categories-tmpl" type="text/x-dot-template">
 			/* loop through categories and asignments */
 			{{~it.gradebookItems :item:j}}
-				{{ var grade = student.grades[item.id]; }}
+				{{
+					var grade = student.grades[item.id];
+					var gradeType;
+				}}
 
 				{{? item.itemType === "Percentage" }}
-					{{ var gradeType = "%"; }}
-					
-					{{?? item.itemType !== "Percentage"}}
-						{{ var gradetype = ""; }}
-					{{??}}
+					{{ gradeType = "%"; }}
+				{{?? }}
+					{{ gradeType = ""; }}
 				{{?}}
 
 				{{? !item }}
 					<td></td>
 					{{?? item.isCategory }}
-						<td class="category-grade category-{{=item.categoryId}}">
-						{{=grade.percent}} {{=gradeType}}
-					</td>
+						<td class="category-{{=item.categoryId}}"><span title="{{=grade.percent}}">{{=grade.percent}}{{=gradeType }}</span>
+						</td>
 					{{??}}
-					<td class="category-{{=item.categoryId}}">{{=grade.percent}} {{=gradeType}}</td>
+						<td class="category-{{=item.categoryId}}"><span title="{{=grade.percent}}">{{=grade.percent}}{{=gradeType }}</span></td>
 				{{?}}
 			{{~}}
 		</script>
@@ -136,8 +141,7 @@
 			
 			{{~it.gradebookItems :item:i}}
 				{{? item.isCategory }}
-					{{ var className = item.id; console.log(it); }}
-					/*{{ console.log(className); }}*/
+					{{ var className = item.id; }}
 					<option value="category-{{=className}}"> {{=item.name}} </option>
 				{{?}}
 			{{~}}
